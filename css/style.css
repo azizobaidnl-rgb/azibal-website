@@ -842,3 +842,108 @@ body {
 
 
 }
+/* ================= PARTNER PAGE CONTENT ================= */
+
+.partner-page {
+
+    padding:80px 8%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    background:#f8f9fa;
+
+}
+
+
+.partner-box {
+
+    background:white;
+    padding:40px 30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:.3s;
+
+}
+
+
+.partner-box:hover {
+
+    transform:translateY(-8px);
+
+}
+
+
+.partner-box h2 {
+
+    color:#0b1f3a;
+    font-size:28px;
+    margin-bottom:20px;
+
+}
+
+
+.partner-box p {
+
+    color:#555;
+    line-height:1.7;
+    font-size:17px;
+
+}
+
+
+.partner-box ul {
+
+    list-style:none;
+    margin-top:20px;
+
+}
+
+
+.partner-box ul li {
+
+    padding:12px 0;
+    color:#555;
+    border-bottom:1px solid #eee;
+    font-size:17px;
+
+}
+
+
+.partner-box ul li::before {
+
+    content:"✓ ";
+    color:#c89b3c;
+    font-weight:bold;
+
+}
+
+
+.partner-box ol {
+
+    margin-top:20px;
+    padding-left:25px;
+
+}
+
+
+.partner-box ol li {
+
+    padding:10px 0;
+    color:#555;
+    font-size:17px;
+
+}
+
+
+
+/* Partner page mobile */
+
+@media(max-width:900px){
+
+    .partner-page {
+
+        grid-template-columns:1fr;
+
+    }
+
+}
