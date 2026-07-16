@@ -1148,3 +1148,15 @@ grid-template-columns: 1fr;
 }
 
 }
+.logo img {
+    width: 140px;
+    height: auto;
+    display: block;
+}
+@media(max-width:768px){
+
+.logo img {
+    width: 110px;
+}
+
+}
