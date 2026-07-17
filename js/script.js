@@ -1,26 +1,57 @@
-// AziBal Website JavaScript
+// ================= MOBILE MENU =================
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    console.log("AziBal website loaded successfully");
+const menuToggle = document.getElementById("menu-toggle");
 
-});
-const menuBtn = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav-menu");
+const navMenu = document.getElementById("nav-menu");
 
-menuBtn.addEventListener("click", () => {
-    nav.classList.toggle("active");
 
-    if(nav.classList.contains("active")){
-        menuBtn.innerHTML = "✕";
-    }else{
-        menuBtn.innerHTML = "☰";
+
+if(menuToggle && navMenu){
+
+
+menuToggle.addEventListener("click", function(){
+
+
+    navMenu.classList.toggle("active");
+
+
+
+    if(navMenu.classList.contains("active")){
+
+        menuToggle.innerHTML = "✕";
+
     }
+
+    else{
+
+        menuToggle.innerHTML = "☰";
+
+    }
+
+
 });
 
-document.querySelectorAll(".nav a").forEach(link=>{
-    link.addEventListener("click",()=>{
-        nav.classList.remove("active");
-        menuBtn.innerHTML="☰";
+
+
+
+// Close menu after clicking a link
+
+document.querySelectorAll(".nav a").forEach(function(link){
+
+
+    link.addEventListener("click", function(){
+
+
+        navMenu.classList.remove("active");
+
+        menuToggle.innerHTML = "☰";
+
+
     });
+
+
 });
+
+
+}
