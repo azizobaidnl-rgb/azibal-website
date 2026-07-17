@@ -752,27 +752,46 @@ body {
 }
 
 
-.nav {
+.nav{
 
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
+    position:fixed;
+    top:0;
+    left:-100%;
     width:100%;
-    background:white;
-    flex-direction:column;
-    padding:20px;
-    text-align:center;
-
-}
-
-
-.nav.active {
+    height:100vh;
+    background:#0b1f3a;
 
     display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+
+    transition:.4s;
+    z-index:1001;
 
 }
 
+.nav.active{
+
+    left:0;
+
+}
+
+.nav a{
+
+    color:white;
+    font-size:24px;
+    text-decoration:none;
+
+}
+
+.menu-toggle{
+
+    display:block;
+    z-index:1002;
+
+}
 
 .nav a {
 
