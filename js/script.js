@@ -5,15 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("AziBal website loaded successfully");
 
 });
-const menuToggle = document.getElementById("menu-toggle");
-const navMenu = document.getElementById("nav-menu");
+const menuBtn = document.getElementById("menu-toggle");
+const nav = document.getElementById("nav-menu");
 
-if(menuToggle){
+menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("active");
 
-menuToggle.addEventListener("click", function(){
-
-navMenu.classList.toggle("active");
-
+    if(nav.classList.contains("active")){
+        menuBtn.innerHTML = "✕";
+    }else{
+        menuBtn.innerHTML = "☰";
+    }
 });
 
-}
+document.querySelectorAll(".nav a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        nav.classList.remove("active");
+        menuBtn.innerHTML="☰";
+    });
+});
