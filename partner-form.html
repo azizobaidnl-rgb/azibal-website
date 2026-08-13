@@ -8,65 +8,24 @@
 <link rel="canonical" href="https://azibal.com/partner-form.html">
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="stylesheet" href="css/style.css">
+<style>
+.partnership-form-section{padding-top:72px;padding-bottom:86px}.partnership-form-card{max-width:920px;margin:0 auto;background:#fff;border:1px solid #e1e6ee;border-radius:18px;padding:clamp(28px,5vw,52px);box-shadow:0 18px 45px rgba(15,31,58,.08)}.partnership-form{width:100%}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.form-field{min-width:0}.form-field-full{grid-column:1/-1}.form-field label{display:block;margin:0 0 7px;color:#25324a;font-size:14px;font-weight:700}.form-field label span{color:#b4862f}.form-field input,.form-field select,.form-field textarea{display:block;width:100%;margin:0 0 20px;padding:13px 15px;border:1px solid #d6dce6;border-radius:9px;background:#fff;color:#172033;font:inherit;line-height:1.45;outline:none;transition:border-color .2s ease,box-shadow .2s ease}.form-field input,.form-field select{min-height:48px}.form-field textarea{min-height:155px;resize:vertical}.form-field input:hover,.form-field select:hover,.form-field textarea:hover{border-color:#b8c0ce}.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#c89b3c;box-shadow:0 0 0 3px rgba(200,155,60,.14)}.form-field input::placeholder,.form-field textarea::placeholder{color:#98a2b3}.consent{display:flex;align-items:flex-start;gap:11px;margin:2px 0 24px;color:#667085;font-size:13px;line-height:1.55;font-weight:500}.consent input{flex:0 0 auto;width:17px;height:17px;margin:2px 0 0;accent-color:#c89b3c}.form-submit{width:100%;min-height:52px;border:0;cursor:pointer;font-family:inherit;font-size:16px}.form-status{min-height:22px;margin-top:14px;text-align:center;color:#667085;font-size:14px}.form-hero{min-height:500px}@media(max-width:780px){.partnership-form-section{padding-top:58px;padding-bottom:65px}.partnership-form-card{padding:26px 20px;border-radius:14px}.form-grid{grid-template-columns:1fr}.form-field-full{grid-column:auto}.form-field input,.form-field select,.form-field textarea{margin-bottom:17px}.form-hero{min-height:500px}}@media(max-width:480px){.partnership-form-card{padding:22px 16px}.form-field input,.form-field select,.form-field textarea{font-size:16px}.consent{font-size:12.5px}}
+</style>
 </head>
 <body>
-<header class="header">
-<a class="logo" href="index.html" aria-label="AziBal home">AziBal</a>
-<nav class="nav" aria-label="Main navigation">
-<a href="index.html">Home</a><a href="products.html">Products</a><a href="partner.html">For Brands</a><a href="contact.html">Contact</a>
-</nav>
-<a href="partner-form.html" class="header-btn">Become a Partner</a>
-</header>
+<header class="header"><a class="logo" href="index.html" aria-label="AziBal home">AziBal</a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="products.html">Products</a><a href="partner.html">For Brands</a><a href="contact.html">Contact</a></nav><a href="partner-form.html" class="header-btn">Become a Partner</a></header>
 <main>
-<section class="hero form-hero">
-<div class="hero-content">
-<span class="eyebrow">WHOLESALE PARTNERSHIP</span>
-<h1>Tell us about your business.</h1>
-<p>Share your company and product requirements with AziBal. We review partnership enquiries based on product fit, commercial requirements and availability.</p>
-</div>
-</section>
-<section class="section section-light partnership-form-section">
-<div class="section-heading">
-<span class="eyebrow">PARTNERSHIP ENQUIRY</span>
-<h2>Start the conversation.</h2>
-<p>Please provide accurate business information so we can understand your requirements and respond professionally.</p>
-</div>
-<div class="partnership-form-card">
-<form id="partnerForm" class="partnership-form">
-<input type="hidden" name="_subject" value="AziBal Wholesale Partnership Enquiry">
-<div class="form-grid">
-<div class="form-field"><label for="name">Full name <span>*</span></label><input id="name" type="text" name="name" autocomplete="name" required></div>
-<div class="form-field"><label for="company">Company name <span>*</span></label><input id="company" type="text" name="company" autocomplete="organization" required></div>
-<div class="form-field"><label for="email">Business email <span>*</span></label><input id="email" type="email" name="email" autocomplete="email" required></div>
-<div class="form-field"><label for="phone">Phone number</label><input id="phone" type="tel" name="phone" autocomplete="tel"></div>
-<div class="form-field"><label for="country">Country <span>*</span></label><input id="country" type="text" name="country" autocomplete="country-name" required></div>
-<div class="form-field"><label for="website">Company website</label><input id="website" type="url" name="website" placeholder="https://"></div>
-<div class="form-field"><label for="business_type">Business type</label><select id="business_type" name="business_type"><option value="Retailer">Retailer</option><option value="Wholesaler">Wholesaler</option><option value="Distributor">Distributor</option><option value="E-commerce business">E-commerce business</option><option value="Marketplace seller">Marketplace seller</option><option value="Other">Other</option></select></div>
-<div class="form-field"><label for="order_volume">Expected purchasing frequency</label><select id="order_volume" name="order_volume"><option value="Initial order / trial">Initial order / trial</option><option value="Regular monthly purchasing">Regular monthly purchasing</option><option value="Regular quarterly purchasing">Regular quarterly purchasing</option><option value="Project-based purchasing">Project-based purchasing</option><option value="To be discussed">To be discussed</option></select></div>
-<div class="form-field form-field-full"><label for="products">Products / brands of interest</label><input id="products" type="text" name="products" placeholder="e.g. home, beauty, electronics"></div>
-<div class="form-field form-field-full"><label for="message">Message</label><textarea id="message" name="message" rows="7" placeholder="Tell us what you are looking for, preferred categories, markets or any relevant requirements."></textarea></div>
-</div>
-<label class="consent"><input type="checkbox" name="confirmation" value="confirmed" required><span>I confirm that the information provided is accurate and may be used to respond to this business enquiry.</span></label>
-<button type="submit" class="button form-submit">Submit Partnership Enquiry</button>
-<p id="formStatus" class="form-status" role="status"></p>
-</form>
-</div>
-</section>
-<section class="section">
-<div class="section-heading"><span class="eyebrow">WHAT HAPPENS NEXT</span><h2>A professional first step.</h2></div>
-<div class="process-grid">
-<div class="process-card"><span>01</span><h3>We receive your enquiry</h3><p>Your business and product information is sent through our enquiry form.</p></div>
-<div class="process-card"><span>02</span><h3>We review the fit</h3><p>We consider your requirements alongside our current sourcing and partnership focus.</p></div>
-<div class="process-card"><span>03</span><h3>We respond</h3><p>If there is a suitable opportunity, we continue the conversation by email or phone.</p></div>
-<div class="process-card"><span>04</span><h3>We discuss next steps</h3><p>Relevant product information, terms and requirements can then be discussed directly.</p></div>
-</div>
-</section>
+<section class="hero form-hero"><div class="hero-content"><span class="eyebrow">WHOLESALE PARTNERSHIP</span><h1>Tell us about your business.</h1><p>Share your company and product requirements with AziBal. We review partnership enquiries based on product fit, commercial requirements and availability.</p></div></section>
+<section class="section section-light partnership-form-section"><div class="section-heading"><span class="eyebrow">PARTNERSHIP ENQUIRY</span><h2>Start the conversation.</h2><p>Please provide accurate business information so we can understand your requirements and respond professionally.</p></div>
+<div class="partnership-form-card"><form id="partnerForm" class="partnership-form"><input type="hidden" name="_subject" value="AziBal Wholesale Partnership Enquiry"><div class="form-grid">
+<div class="form-field"><label for="name">Full name <span>*</span></label><input id="name" type="text" name="name" autocomplete="name" required></div><div class="form-field"><label for="company">Company name <span>*</span></label><input id="company" type="text" name="company" autocomplete="organization" required></div>
+<div class="form-field"><label for="email">Business email <span>*</span></label><input id="email" type="email" name="email" autocomplete="email" required></div><div class="form-field"><label for="phone">Phone number</label><input id="phone" type="tel" name="phone" autocomplete="tel"></div>
+<div class="form-field"><label for="country">Country <span>*</span></label><input id="country" type="text" name="country" autocomplete="country-name" required></div><div class="form-field"><label for="website">Company website</label><input id="website" type="url" name="website" placeholder="https://"></div>
+<div class="form-field"><label for="business_type">Business type</label><select id="business_type" name="business_type"><option value="Retailer">Retailer</option><option value="Wholesaler">Wholesaler</option><option value="Distributor">Distributor</option><option value="E-commerce business">E-commerce business</option><option value="Marketplace seller">Marketplace seller</option><option value="Other">Other</option></select></div><div class="form-field"><label for="order_volume">Expected purchasing frequency</label><select id="order_volume" name="order_volume"><option value="Initial order / trial">Initial order / trial</option><option value="Regular monthly purchasing">Regular monthly purchasing</option><option value="Regular quarterly purchasing">Regular quarterly purchasing</option><option value="Project-based purchasing">Project-based purchasing</option><option value="To be discussed">To be discussed</option></select></div>
+<div class="form-field form-field-full"><label for="products">Products / brands of interest</label><input id="products" type="text" name="products" placeholder="e.g. home, beauty, electronics"></div><div class="form-field form-field-full"><label for="message">Message</label><textarea id="message" name="message" rows="7" placeholder="Tell us what you are looking for, preferred categories, markets or any relevant requirements."></textarea></div>
+</div><label class="consent"><input type="checkbox" name="confirmation" value="confirmed" required><span>I confirm that the information provided is accurate and may be used to respond to this business enquiry.</span></label><button type="submit" class="button form-submit">Submit Partnership Enquiry</button><p id="formStatus" class="form-status" role="status"></p></form></div></section>
+<section class="section"><div class="section-heading"><span class="eyebrow">WHAT HAPPENS NEXT</span><h2>A professional first step.</h2></div><div class="process-grid"><div class="process-card"><span>01</span><h3>We receive your enquiry</h3><p>Your business and product information is sent through our enquiry form.</p></div><div class="process-card"><span>02</span><h3>We review the fit</h3><p>We consider your requirements alongside our current sourcing and partnership focus.</p></div><div class="process-card"><span>03</span><h3>We respond</h3><p>If there is a suitable opportunity, we continue the conversation by email or phone.</p></div><div class="process-card"><span>04</span><h3>We discuss next steps</h3><p>Relevant product information, terms and requirements can then be discussed directly.</p></div></div></section>
 </main>
 <footer class="footer"><div class="footer-container"><div><h3>AziBal</h3><p>Netherlands-based B2B wholesale, product sourcing and brand partnerships.</p></div><div><h3>Business</h3><a href="index.html">Home</a><a href="products.html">Products</a><a href="partner.html">For Brands</a><a href="contact.html">Contact</a></div><div><h3>Partnership</h3><a href="partner-form.html">Wholesale Enquiry</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div><div><h3>Contact</h3><p>info@azibal.com</p><p>+31 6 848 19466</p><p>Purmerend, Netherlands</p></div></div><div class="footer-bottom"><p>© 2026 AziBal. All rights reserved.</p></div></footer>
-<script>
-const form=document.getElementById('partnerForm');
-const status=document.getElementById('formStatus');
-form.addEventListener('submit',async(e)=>{e.preventDefault();status.textContent='Sending your enquiry…';const data=new FormData(form);try{const r=await fetch('https://formspree.io/f/xqereodo',{method:'POST',body:data,headers:{Accept:'application/json'}});if(r.ok){window.location.href='thank-you.html';}else{status.textContent='We could not send your enquiry. Please email info@azibal.com directly.';}}catch(err){status.textContent='Connection error. Please email info@azibal.com directly.';}});
-</script>
-</body>
-</html>
+<script>const form=document.getElementById('partnerForm');const status=document.getElementById('formStatus');form.addEventListener('submit',async(e)=>{e.preventDefault();status.textContent='Sending your enquiry…';const data=new FormData(form);try{const r=await fetch('https://formspree.io/f/xqereodo',{method:'POST',body:data,headers:{Accept:'application/json'}});if(r.ok){window.location.href='thank-you.html';}else{status.textContent='We could not send your enquiry. Please email info@azibal.com directly.';}}catch(err){status.textContent='Connection error. Please email info@azibal.com directly.';}});</script>
+</body></html>
