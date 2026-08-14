@@ -1,0 +1,152 @@
+name: Website checks
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate website
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Validate HTML, links and assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlparse
+          import xml.etree.ElementTree as ET
+
+          root = Path.cwd().resolve()
+          errors = []
+
+          class PageAudit(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.doctype = False
+                  self.lang = ''
+                  self.title_count = 0
+                  self.viewport = False
+                  self.references = []
+                  self.ids = set()
+                  self.duplicate_ids = set()
+
+              def handle_decl(self, declaration):
+                  if declaration.strip().lower() == 'doctype html':
+                      self.doctype = True
+
+              def handle_starttag(self, tag, attributes):
+                  attrs = dict(attributes)
+                  if tag == 'html':
+                      self.lang = (attrs.get('lang') or '').strip()
+                  elif tag == 'title':
+                      self.title_count += 1
+                  elif tag == 'meta' and (attrs.get('name') or '').lower() == 'viewport':
+                      self.viewport = bool((attrs.get('content') or '').strip())
+
+                  element_id = (attrs.get('id') or '').strip()
+                  if element_id:
+                      if element_id in self.ids:
+                          self.duplicate_ids.add(element_id)
+                      self.ids.add(element_id)
+
+                  for attribute in ('href', 'src'):
+                      if attribute in attrs:
+                          self.references.append((tag, attribute, (attrs[attribute] or '').strip()))
+
+          def resolve_local_reference(page, reference):
+              if not reference or reference.startswith(('#', '//')):
+                  return None
+              parsed = urlparse(reference)
+              if parsed.scheme or parsed.netloc:
+                  return None
+              path = unquote(parsed.path)
+              if not path:
+                  return None
+              target = root / path.lstrip('/') if path.startswith('/') else page.parent / path
+              if path.endswith('/'):
+                  target = target / 'index.html'
+              return target.resolve()
+
+          html_files = sorted(path for path in root.rglob('*.html') if '.git' not in path.parts)
+          if not html_files:
+              errors.append('No HTML files found.')
+
+          for page in html_files:
+              audit = PageAudit()
+              try:
+                  audit.feed(page.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  errors.append(f'{page.relative_to(root)}: HTML parsing failed: {exc}')
+                  continue
+
+              relative_page = page.relative_to(root)
+              if not audit.doctype:
+                  errors.append(f'{relative_page}: missing <!DOCTYPE html>.')
+              if not audit.lang:
+                  errors.append(f'{relative_page}: missing html lang attribute.')
+              if audit.title_count != 1:
+                  errors.append(f'{relative_page}: expected one title element, found {audit.title_count}.')
+              if not audit.viewport:
+                  errors.append(f'{relative_page}: missing viewport meta tag.')
+              if audit.duplicate_ids:
+                  errors.append(f'{relative_page}: duplicate IDs: {sorted(audit.duplicate_ids)}')
+
+              for tag, attribute, reference in audit.references:
+                  if not reference:
+                      errors.append(f'{relative_page}: empty {attribute} on <{tag}>.')
+                      continue
+                  target = resolve_local_reference(page, reference)
+                  if target is None:
+                      continue
+                  try:
+                      target.relative_to(root)
+                  except ValueError:
+                      errors.append(f'{relative_page}: reference leaves repository: {reference}')
+                      continue
+                  if not target.is_file():
+                      errors.append(f'{relative_page}: missing local target: {reference}')
+
+          required_files = ('index.html', '404.html', 'CNAME', 'robots.txt', 'sitemap.xml')
+          for required_file in required_files:
+              if not (root / required_file).is_file():
+                  errors.append(f'Missing required file: {required_file}')
+
+          try:
+              ET.parse(root / 'sitemap.xml')
+          except Exception as exc:
+              errors.append(f'sitemap.xml: invalid XML: {exc}')
+
+          if (root / 'CNAME').is_file() and (root / 'CNAME').read_text(encoding='utf-8').strip() != 'azibal.com':
+              errors.append('CNAME must contain azibal.com.')
+
+          if errors:
+              print('Website validation failed:')
+              for error in errors:
+                  print(f'::error::{error}')
+              raise SystemExit(1)
+
+          print(f'Validated {len(html_files)} HTML pages and their local references.')
+          PY
+
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          while IFS= read -r -d '' file; do
+            node --check "$file"
+          done < <(find js -type f -name '*.js' -print0)
