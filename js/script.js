@@ -123,3 +123,10 @@ document.addEventListener("DOMContentLoaded",function(){
 
   bot("Hello! I'm the AziBal website assistant. I can help with wholesale buying, supplier or brand partnerships, product categories and contact information.");
 });
+
+(function(){
+  const script=document.createElement('script');
+  script.src='js/newsletter.js';
+  script.async=true;
+  document.head.appendChild(script);
+})();
