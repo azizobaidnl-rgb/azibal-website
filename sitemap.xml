@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://azibal.com/</loc></url>
-  <url><loc>https://azibal.com/products.html</loc></url>
-  <url><loc>https://azibal.com/partner.html</loc></url>
-  <url><loc>https://azibal.com/for-suppliers.html</loc></url>
-  <url><loc>https://azibal.com/contact.html</loc></url>
-  <url><loc>https://azibal.com/partner-form.html</loc></url>
-  <url><loc>https://azibal.com/privacy.html</loc></url>
-  <url><loc>https://azibal.com/terms.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://azibal.com/</loc><xhtml:link rel="alternate" hreflang="en" href="https://azibal.com/"/><xhtml:link rel="alternate" hreflang="nl" href="https://azibal.com/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://azibal.com/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://azibal.com/"/></url>
+  <url><loc>https://azibal.com/nl/</loc><xhtml:link rel="alternate" hreflang="en" href="https://azibal.com/"/><xhtml:link rel="alternate" hreflang="nl" href="https://azibal.com/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://azibal.com/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://azibal.com/"/></url>
+  <url><loc>https://azibal.com/de/</loc><xhtml:link rel="alternate" hreflang="en" href="https://azibal.com/"/><xhtml:link rel="alternate" hreflang="nl" href="https://azibal.com/nl/"/><xhtml:link rel="alternate" hreflang="de" href="https://azibal.com/de/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://azibal.com/"/></url>
+  <url><loc>https://azibal.com/about.html</loc></url><url><loc>https://azibal.com/nl/about.html</loc></url><url><loc>https://azibal.com/de/about.html</loc></url>
+  <url><loc>https://azibal.com/products.html</loc></url><url><loc>https://azibal.com/nl/products.html</loc></url><url><loc>https://azibal.com/de/products.html</loc></url>
+  <url><loc>https://azibal.com/partner.html</loc></url><url><loc>https://azibal.com/nl/partner.html</loc></url><url><loc>https://azibal.com/de/partner.html</loc></url>
+  <url><loc>https://azibal.com/for-suppliers.html</loc></url><url><loc>https://azibal.com/nl/for-suppliers.html</loc></url><url><loc>https://azibal.com/de/for-suppliers.html</loc></url>
+  <url><loc>https://azibal.com/contact.html</loc></url><url><loc>https://azibal.com/nl/contact.html</loc></url><url><loc>https://azibal.com/de/contact.html</loc></url>
+  <url><loc>https://azibal.com/partner-form.html</loc></url><url><loc>https://azibal.com/nl/partner-form.html</loc></url><url><loc>https://azibal.com/de/partner-form.html</loc></url>
+  <url><loc>https://azibal.com/privacy.html</loc></url><url><loc>https://azibal.com/nl/privacy.html</loc></url><url><loc>https://azibal.com/de/privacy.html</loc></url>
+  <url><loc>https://azibal.com/terms.html</loc></url><url><loc>https://azibal.com/nl/terms.html</loc></url><url><loc>https://azibal.com/de/terms.html</loc></url>
 </urlset>
