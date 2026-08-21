@@ -102,3 +102,71 @@
     setTimeout(()=>email.focus({preventScroll:true}),250);
   },SHOW_DELAY);
 })();
+
+(function(){
+  function initHeaderPolish(){
+    const header=document.querySelector('.header');
+    if(!header||document.querySelector('.az-announcement-bar')) return;
+
+    const path=window.location.pathname;
+    const lang=path.startsWith('/nl/')?'nl':path.startsWith('/de/')?'de':'en';
+    const messages={
+      en:['Netherlands-based B2B sourcing','Wholesale sourcing & brand partnerships','Direct business contact','KVK 42143577'],
+      nl:['Nederlandse B2B sourcing','Groothandel & merkpartnerschappen','Direct zakelijk contact','KVK 42143577'],
+      de:['B2B-Sourcing aus den Niederlanden','Großhandel & Markenpartnerschaften','Direkter Geschäftskontakt','KVK 42143577']
+    }[lang];
+
+    const style=document.createElement('style');
+    style.textContent=`
+      .az-announcement-bar{height:46px;background:#1d2a3b;color:#fff;display:flex;align-items:center;justify-content:center;padding:0 18px;overflow:hidden;font-family:Inter,Arial,sans-serif}
+      .az-announcement-inner{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0}
+      .az-announcement-mark{width:22px;height:22px;border:1.5px solid rgba(255,255,255,.9);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:11px;font-weight:800;color:#fff}
+      .az-announcement-text{font-size:14px;font-weight:500;letter-spacing:.01em;white-space:nowrap;opacity:1;transform:translateY(0);transition:opacity .2s ease,transform .2s ease}
+      .az-announcement-text.is-changing{opacity:0;transform:translateY(-7px)}
+      @media(max-width:780px){
+        .az-announcement-bar{height:46px;padding:0 12px}
+        .az-announcement-text{font-size:13px}
+        .header{position:sticky!important;top:0!important;display:grid!important;grid-template-columns:46px 1fr 46px!important;align-items:center!important;column-gap:12px!important;min-height:76px!important;padding:12px 5%!important}
+        .header>.header-btn{display:none!important}
+        .header .logo{grid-column:2!important;grid-row:1!important;justify-self:center!important;margin:0!important;text-align:center!important;font-size:clamp(2.1rem,8vw,2.85rem)!important;line-height:1!important}
+        .header .language-switcher{grid-column:3!important;grid-row:1!important;justify-self:end!important;margin-left:0!important}
+        .header .language-toggle{width:42px!important;height:42px!important}
+        .mobile-menu-toggle{grid-column:1!important;grid-row:1!important;justify-self:start!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;width:42px!important;height:42px!important;padding:0!important}
+        .mobile-menu-toggle span,.mobile-menu-toggle::before,.mobile-menu-toggle::after{width:19px!important;height:2px!important;margin:0!important;flex:0 0 auto!important}
+        .header .nav{top:100%!important}
+      }
+      @media(max-width:390px){
+        .az-announcement-text{font-size:12px}
+        .az-announcement-mark{width:20px;height:20px;font-size:10px}
+        .header{grid-template-columns:42px 1fr 42px!important;column-gap:8px!important}
+      }
+      @media(prefers-reduced-motion:reduce){.az-announcement-text{transition:none}}
+    `;
+    document.head.appendChild(style);
+
+    const bar=document.createElement('div');
+    bar.className='az-announcement-bar';
+    bar.setAttribute('role','region');
+    bar.setAttribute('aria-label','AziBal business information');
+    bar.innerHTML='<div class="az-announcement-inner"><span class="az-announcement-mark" aria-hidden="true">AZ</span><span class="az-announcement-text"></span></div>';
+    header.parentNode.insertBefore(bar,header);
+
+    const text=bar.querySelector('.az-announcement-text');
+    let index=0;
+    text.textContent=messages[index];
+
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      setInterval(function(){
+        text.classList.add('is-changing');
+        setTimeout(function(){
+          index=(index+1)%messages.length;
+          text.textContent=messages[index];
+          text.classList.remove('is-changing');
+        },200);
+      },3200);
+    }
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initHeaderPolish);
+  else initHeaderPolish();
+})();
