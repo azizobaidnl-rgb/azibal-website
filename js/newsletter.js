@@ -170,3 +170,10 @@
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initHeaderPolish);
   else initHeaderPolish();
 })();
+
+(function(){
+  const script=document.createElement('script');
+  script.src='/js/ai-chat.js';
+  script.async=true;
+  document.head.appendChild(script);
+})();
